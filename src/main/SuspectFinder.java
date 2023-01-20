@@ -12,7 +12,22 @@ public class SuspectFinder {
 	public static void main(String[] args) {
 		FileService fileService = new FileService();
 		List<Suspect> suspectLineUp = fileService.getSuspectsFromFile();
+		System.out.println(suspectLineUp);
 		
+		
+		 Map<Integer, List<Suspect>> suspects = suspectLineUp.stream()
+										
+										.filter (x ->  !x.getHairColor().equalsIgnoreCase("RED"))
+										.filter( s -> s.getHasGlasses() != true)
+										.collect(Collectors.groupingBy(Suspect::getBirthYear, Collectors.toList()));
+										
+										
+										
+										
+		
+	
+		System.out.println(suspects );
+	
 		
 		// There should only be one person that is returned here...
 		// The map listed here is the birth year (Integer) and the List of suspects
@@ -22,14 +37,13 @@ public class SuspectFinder {
 		//   -> this will return the birth year and a list of suspect obects (if done correctly, there should
 		//		only be one suspect object.
 		
-		
-		Map<Integer, List<Suspect>> suspects = null;
-		
-		
-		// APPLY FILTERING LOGIC HERE....
-		
-		
-		
+//		
+//		Map<Integer, List<Suspect>> suspects = null; 
+//	
+//		// APPLY FILTERING LOGIC HERE....
+//		
+//		
+//		
 		String guilty = suspects.entrySet()
 				.stream()
 				.map(entry -> entry.getValue().get(0).getName())

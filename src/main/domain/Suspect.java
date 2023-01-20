@@ -110,6 +110,8 @@ public class Suspect {
 				+ facialHair + ", shirt=" + shirt + ", pants=" + pants + ", shoes=" + shoes + ", birthYear=" + birthYear
 				+ "]";
 	}
+
+
 	
 	
 	
